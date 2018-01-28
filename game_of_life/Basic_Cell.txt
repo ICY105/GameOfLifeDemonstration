@@ -1,0 +1,8 @@
+color=0,0,255
+priority=1
+value=1
+spontaneous=false
+aliveMin=2
+aliveMax=3
+createMin=3
+createMax=3
