@@ -47,7 +47,7 @@ public class GamePanel extends JPanel {
 					int y = (arg0.getY() - offsetY)/cellSize;
 					
 					if(x >= 0 && x < GameBoard.GAMESIZE && y >= 0 && y < GameBoard.GAMESIZE)
-						Start.game.updateCell(x,y,!Start.game.isCellAlive(x, y));
+						Start.game.updateCell(x,y,Options.getSelected());
 				}
 				repaint();
 			}
@@ -81,7 +81,7 @@ public class GamePanel extends JPanel {
 					int y = (arg0.getY() - offsetY)/cellSize;
 					
 					if(x >= 0 && x < GameBoard.GAMESIZE && y >= 0 && y < GameBoard.GAMESIZE)
-						Start.game.updateCell(x,y,!Start.game.isCellAlive(x, y));
+						Start.game.updateCell(x,y,Options.getSelected());
 				}
 				repaint();
 			}
@@ -115,10 +115,8 @@ public class GamePanel extends JPanel {
 		
 		for(int i = 0; i < GameBoard.GAMESIZE; i++) {
 			for(int j = 0; j < GameBoard.GAMESIZE; j++) {
-				if(Start.game.isCellAlive(i, j))
-					g2d.setColor(Color.BLUE);
-				else
-					g2d.setColor(Color.LIGHT_GRAY);
+				g2d.setColor(Start.game.getCellType(i, j).color);
+				
 				g2d.fillRect(cellSize * i + offsetX, cellSize * j + offsetY, cellSize, cellSize);
 				g2d.setColor(Color.BLACK);
 				g2d.drawRect(cellSize * i + offsetX, cellSize * j + offsetY, cellSize, cellSize);

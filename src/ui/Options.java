@@ -2,14 +2,19 @@ package ui;
 
 public class Options {
 	
-	boolean active = false;
-	int speed = 1;
+	static boolean active = false;
+	static int speed = 1;
+	static byte selected = 1;
 	
-	public boolean getActive() {
+	public static boolean getActive() {
 		return active;
 	}
 	
-	public int getSpeed() {
+	public static int getSpeed() {
 		return speed;
+	}
+	
+	public static byte getSelected() {
+		return selected;
 	}
 }

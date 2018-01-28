@@ -1,5 +1,8 @@
 package main;
 
+import java.util.ArrayList;
+
+import ui.Options;
 import ui.UI;
 
 public class Start {
@@ -9,17 +12,19 @@ public class Start {
 	public static GameBoard game;
 	
 	public static void main(String[] args) {
-		game = new GameBoard();
+		ArrayList<Cell> cells = ReadCell.readCells();
+		
+		game = new GameBoard(cells);
 		UI ui = new UI();
 		
 		active = true;
 		while(active) {
-			if(ui.options.getActive())
+			if(Options.getActive())
 				game.updateCells();
 			ui.updateGameUI();
 			
 			try {
-				Thread.sleep(ui.options.getSpeed());
+				Thread.sleep(Options.getSpeed());
 			} catch (InterruptedException e) {}
 		}
 	}

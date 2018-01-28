@@ -11,13 +11,9 @@ import main.Start;
 @SuppressWarnings("serial")
 public class UI extends JFrame {
 	
-	public UI() {
-		this.options = new Options();
-		
+	public UI() {		
 		prepairUI();
 	}
-
-	public final Options options;
 	
 	private GamePanel gamePanel;
 	private OptionsPanel optionsPanel;
@@ -60,10 +56,10 @@ public class UI extends JFrame {
 	public void updateGameUI() {
 		gamePanel.repaint();
 		
-		options.speed = optionsPanel.speed.getValue();
-		if(optionsPanel.state.getText().equals("off"))
-			options.active = false;
+		Options.speed = optionsPanel.speed.getValue();
+		if(optionsPanel.state.getText().equals("          off          "))
+			Options.active = false;
 		else
-			options.active = true;
+			Options.active = true;
 	}
 }
