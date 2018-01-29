@@ -116,12 +116,13 @@ public class GamePanel extends JPanel {
 		for(int i = 0; i < GameBoard.GAMESIZE; i++) {
 			for(int j = 0; j < GameBoard.GAMESIZE; j++) {
 				g2d.setColor(Start.game.getCellType(i, j).color);
-				
 				g2d.fillRect(cellSize * i + offsetX, cellSize * j + offsetY, cellSize, cellSize);
+				
 				g2d.setColor(Color.BLACK);
-				g2d.drawRect(cellSize * i + offsetX, cellSize * j + offsetY, cellSize, cellSize);
+				if(cellSize > 2)
+					g2d.drawRect(cellSize * i + offsetX, cellSize * j + offsetY, cellSize, cellSize);
     	   }
-       }
+		}		
     }
 	
 }

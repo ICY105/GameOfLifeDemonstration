@@ -9,7 +9,7 @@ import javax.swing.JFrame;
 import main.Start;
 
 @SuppressWarnings("serial")
-public class UI extends JFrame {
+public class UI extends JFrame implements Runnable {
 	
 	public UI() {		
 		prepairUI();
@@ -61,5 +61,16 @@ public class UI extends JFrame {
 			Options.active = false;
 		else
 			Options.active = true;
+	}
+	
+	@Override
+	public void run() {
+		while(Start.active) {
+			updateGameUI();
+			
+			try {
+				Thread.sleep(10);
+			} catch (InterruptedException e) {}
+		}
 	}
 }

@@ -22,10 +22,22 @@ public class GameBoard {
 		return cells;
 	}
 	
+	/**
+	 * Updates a single position on the game board.
+	 * @param x cord
+	 * @param y cord
+	 * @param state to put cell in.
+	 */
 	public void updateCell(int x, int y, byte state) {
 		game[x][y] = state;
 	}
 	
+	/**
+	 * 
+	 * @param x cord
+	 * @param y cord
+	 * @return Cell object for given cord.
+	 */
 	public Cell getCellType(int x, int y) {
 		int cell = game[x][y];
 		if(cell != 0 && cell%2 == 0)
@@ -40,6 +52,9 @@ public class GameBoard {
 		return out;
 	}
 	
+	/**
+	 * Runs update cycle.
+	 */
 	public void updateCells() {
 		for(int i = 0; i < GAMESIZE; i++) {
 			for(int j = 0; j < GAMESIZE; j++) {
@@ -90,30 +105,41 @@ public class GameBoard {
 		}
 	}
 	
-	private boolean nearbyType(int i, int j,int id) {
+	/**
+	 * @param x cord
+	 * @param y cord
+	 * @param id of cell to check
+	 * @return if an adjacent cell is of the same type as id
+	 */
+	private boolean nearbyType(int x, int y, int id) {
 		boolean out = false;
 		
-		if(i > 0 && getCellType(i-1,j).id == id)
+		if(x > 0 && getCellType(x-1,y).id == id)
 			out = true;
-		if(i+1 < GAMESIZE && getCellType(i+1,j).id == id)
+		if(x+1 < GAMESIZE && getCellType(x+1,y).id == id)
 			out = true;
-		if(j > 0 && getCellType(i,j-1).id == id)
+		if(y > 0 && getCellType(x,y-1).id == id)
 			out = true;
-		if(j+1 < GAMESIZE && getCellType(i,j+1).id == id)
+		if(y+1 < GAMESIZE && getCellType(x,y+1).id == id)
 			out = true;
 		
-		if(i+1 < GAMESIZE && j+1 < GAMESIZE && getCellType(i+1,j+1).id == id)
+		if(x+1 < GAMESIZE && y+1 < GAMESIZE && getCellType(x+1,y+1).id == id)
 			out = true;
-		if(i+1 < GAMESIZE && j > 0 && getCellType(i+1,j-1).id == id)
+		if(x+1 < GAMESIZE && y > 0 && getCellType(x+1,y-1).id == id)
 			out = true;
-		if(i > 0 && j+1 < GAMESIZE && getCellType(i-1,j+1).id == id)
+		if(x > 0 && y+1 < GAMESIZE && getCellType(x-1,y+1).id == id)
 			out = true;
-		if(i > 0 && j > 0 && getCellType(i-1,j-1).id == id)
+		if(x > 0 && y > 0 && getCellType(x-1,y-1).id == id)
 			out = true;
 		
 		return out;
 	}
-
+	
+	/**
+	 * @param x cord
+	 * @param y cord
+	 * @return Value of cell at given position
+	 */
 	private int getCellValue(int x, int y) {
 		int out = 0;
 		if(game[x][y] > 0)

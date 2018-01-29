@@ -10,6 +10,10 @@ import java.util.ArrayList;
 
 public class ReadCell {
 	
+	/**
+	 * Loads cell information from external text files.
+	 * @return List of loaded cells.
+	 */
 	public static ArrayList<Cell> readCells() {
 		ArrayList<Cell> out = new ArrayList<Cell>();
 		
@@ -29,6 +33,11 @@ public class ReadCell {
 	}
 	
 	private static int cellID = 1;
+	/**
+	 * Reads info from text file to create Cell object.
+	 * @param file to read
+	 * @return Generated Cell
+	 */
 	private static Cell processFile(File file) {
 		int id = cellID;
 		cellID += 2;
@@ -41,8 +50,6 @@ public class ReadCell {
 		int aliveMax = 0;
 		int createMin = 0;
 		int createMax = 0;
-		
-		System.out.println("id:" + id);
 		
 		try {
 			FileReader fr = new FileReader(file);
@@ -88,7 +95,10 @@ public class ReadCell {
 		}
 		return new Cell(file.getName().substring(0,file.getName().length()-4), (byte)id, color, value, priority, spontaneous, aliveMin, aliveMax, createMin, createMax);
 	}
-
+	
+	/**
+	 * Generates default folder & cell at given location.
+	 */
 	private static void generateDefault(File file) {
 		file.mkdir();
 		File cell = new File("game_of_life/Basic_Cell.txt");

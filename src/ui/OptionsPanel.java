@@ -54,7 +54,7 @@ public class OptionsPanel extends JPanel {
 		this.add(new JLabel(" "));
 		
 		this.add(new JLabel("Speed:"));
-		speed = new JSlider(JSlider.HORIZONTAL,10,2000,10);	
+		speed = new JSlider(JSlider.HORIZONTAL,1,2000,10);	
 		speed.setMajorTickSpacing(250);
 		speed.setMinorTickSpacing(25);
 		speed.setPaintTicks(true);
